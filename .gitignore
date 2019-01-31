@@ -1,0 +1,5 @@
+/theme/dist/
+/data/
+/wordpress/
+node_modules/
+/*.log

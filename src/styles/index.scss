@@ -1,0 +1,18 @@
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/functions';
+
+// sass vars
+$primary-color: #fafafa;
+
+// postcss vars
+:root {
+  --mainColor: #333;
+}
+
+body {
+  background-color: $primary-color;
+  border: $border-width solid var(--borderColor);
+  color: var(--mainColor);
+  transition: all 0.5s;
+}

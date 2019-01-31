@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "postcss-import": {},
+    "postcss-preset-env": {
+      "stage": 3,
+      "preserve": false
+    }
+  }
+}

@@ -1,0 +1,29 @@
+version: "3.1"
+
+services:
+  wordpress:
+    ports:
+      - 80:80
+    restart: always
+    environment:
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_NAME: underscored
+    volumes:
+      - ${HOME}/wordpress:/var/www/html
+
+  mysql:
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: underscored
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ${HOME}/data/:/var/lib/mysql
+
+  phpmyadmin:
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
