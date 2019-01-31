@@ -1,7 +1,7 @@
 # \_d
 
-A dockerized, webpack powered WordPress theme inspired by [\_s](https://github.com/Automattic/_s).
-Provides the lastest Web 2.0 features for your WordPress development environment.
+A dockerized, webpack powered WordPress theme inspired by [\_s](https://github.com/Automattic/_s).\
+Provides the lastest Web 2.0 features for your WordPress development experience.
 
 ## Table of Contents
 - [Features](#features)
