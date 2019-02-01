@@ -152,17 +152,21 @@ module.exports = {
   },
 
   plugins: [
-    new WriteFilePlugin(), // wp still needs dist on disk
+    // dump webpack-dev-server memory to disk for wp
+    new WriteFilePlugin(),
+
     new CleanWebpackPlugin([config.dist]),
+
     new MiniCssExtractPlugin({
       filename: DEV_MODE
         ? '../css/[name].css'
         : '../css/[name].[chunkhash].css',
       chunkFilename: '../css/[id].[chunkhash].css',
     }),
+
     new CopyWebpackPlugin([
       {
-        from: `${config.src}/images`,
+        from: `${config.src}/images`, // TODO clearify
         to: `${config.dist}/images`,
       },
       {
@@ -170,10 +174,11 @@ module.exports = {
         to: `${config.dist}/enqueue.php`,
       },
     ]),
+
     new StyleLintPlugin({
       configFile: '.stylelintrc',
       context: 'src',
-      files: '**/*.scss',
+      files: '**/*.scss', // TODO: extend
       failOnError: false,
       quiet: false,
       syntax: 'scss',

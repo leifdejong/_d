@@ -8,7 +8,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p --progress --mode production --config webpack.config.js",
     "clean": "npm run docker-down && rm -rf ./data ./wordpress ./theme/dist",
-    "deploy": "npm run build && npm run docker-build-prod && npm run docker-down && npm run docker-up-prod && npm run docker-prune",
+    "deploy": "npm run build && npm run docker-build-prod && npm run docker-down && npm run docker-up-prod && npm run docker-prune && ./bin/wait_for_wp.sh",
     "docker-build": "docker-compose build",
     "docker-build-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml build",
     "docker-down": "docker-compose down",
@@ -18,20 +18,14 @@
     "docker-up-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d",
     "format": "prettier-package-json --write && eslint --fix *.js ./src/ && stylelint --fix ./src/",
     "lint": "eslint *.js ./src/ && stylelint ./src/",
-    "serve": "docker-compose up -d && ./bin/wait_for_wp.sh && cross-env NODE_ENV=development webpack-dev-server -p --progress --mode development --config webpack.config.js"
+    "serve": "npm run docker-build && npm run docker-up && ./bin/wait_for_wp.sh && cross-env NODE_ENV=development webpack-dev-server -p --progress --mode development --config webpack.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-proposal-decorators": "^7.1.2",
-    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
-    "@babel/plugin-proposal-function-sent": "^7.1.0",
     "@babel/plugin-proposal-json-strings": "^7.0.0",
-    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
-    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.4",

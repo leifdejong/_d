@@ -4,7 +4,6 @@ services:
   wordpress:
     ports:
       - 80:80
-    restart: always
     environment:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_HOST: mysql
@@ -14,7 +13,6 @@ services:
       - ${HOME}/wordpress:/var/www/html
 
   mysql:
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: underscored
@@ -24,6 +22,5 @@ services:
       - ${HOME}/data/:/var/lib/mysql
 
   phpmyadmin:
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
