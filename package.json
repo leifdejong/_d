@@ -7,8 +7,8 @@
   "main": "docker-compose.yml",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p --progress --mode production --config webpack.config.js",
-    "clean": "npm run docker-down && rm -rf ./data ./wordpress ./theme/dist",
-    "deploy": "npm run build && npm run docker-build-prod && npm run docker-down && npm run docker-up-prod && npm run docker-prune && ./bin/wait_for_wp.sh",
+    "clean": "yarpm run docker-down && rm -rf ./data ./wordpress ./theme/dist",
+    "deploy": "yarpm run build && yarpm run docker-build-prod && yarpm run docker-down && yarpm run docker-up-prod && yarpm run docker-prune && yarpm run wait",
     "docker-build": "docker-compose build",
     "docker-build-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml build",
     "docker-down": "docker-compose down",
@@ -18,7 +18,8 @@
     "docker-up-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d",
     "format": "prettier-package-json --write && eslint --fix *.js ./src/ && stylelint --fix ./src/",
     "lint": "eslint *.js ./src/ && stylelint ./src/",
-    "serve": "npm run docker-build && npm run docker-up && ./bin/wait_for_wp.sh && cross-env NODE_ENV=development webpack-dev-server -p --progress --mode development --config webpack.config.js"
+    "serve": "yarpm run docker-up && yarpm run wait && cross-env NODE_ENV=development webpack-dev-server -p --progress --mode development --config webpack.config.js",
+    "wait": "./bin/wait_for_wp.sh"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -58,7 +59,8 @@
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
-    "write-file-webpack-plugin": "^4.4.1"
+    "write-file-webpack-plugin": "^4.4.1",
+    "yarpm": "^0.2.1"
   },
   "husky": {
     "hooks": {

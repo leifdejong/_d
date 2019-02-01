@@ -128,6 +128,7 @@ Here is a full list of framework commands:
 - Format: `yarn format` - formats `/src` scripts and styles
 - Deploy: `yarn deploy` - builds, runs, and deploys the stack to production
 - Clean: `yarn clean` - removes all generated files (**Caution**: deletes development data)
+- Clean: `yarn wait` - waits for WordPress to fully boot up
 
 ## Docker Commands
 

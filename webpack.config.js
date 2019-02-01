@@ -39,6 +39,13 @@ module.exports = {
     proxy: {
       '/': config.wordPress,
     },
+
+    // watch external theme files not consumed by webpack
+    contentBase: `${config.root}/theme`,
+    watchContentBase: true,
+    watchOptions: {
+      ignored: /dist/,
+    },
   },
 
   optimization: {
