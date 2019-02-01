@@ -160,6 +160,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 /**
- * Enqueue dist assets
+ * Enqueue distribution
+ * WARNING: if removed, _d will not be able to inject transpiled assets to this theme
  */
 require get_template_directory() . '/dist/enqueue.php';
