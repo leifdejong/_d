@@ -11,6 +11,7 @@ services:
       WORDPRESS_DB_NAME: underscored
     volumes:
       - ${HOME}/wordpress:/var/www/html
+      - ./theme/:/var/www/html/wp-content/themes/sobol
 
   mysql:
     environment:
@@ -22,5 +23,7 @@ services:
       - ${HOME}/data/:/var/lib/mysql
 
   phpmyadmin:
+    ports:
+      - 3001:80
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}

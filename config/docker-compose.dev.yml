@@ -1,0 +1,30 @@
+version: "3.1"
+
+services:
+  wordpress:
+    ports:
+      - 3002:80
+    environment:
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_NAME: underscored
+    volumes:
+      - ./wordpress:/var/www/html
+      - ./theme/:/var/www/html/wp-content/themes/sobol
+
+  mysql:
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: underscored
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./data/:/var/lib/mysql
+
+  phpmyadmin:
+    ports:
+      - 3001:80
+    environment:
+      MYSQL_ROOT_PASSWORD: Password
+ 

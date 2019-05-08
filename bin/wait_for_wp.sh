@@ -1,7 +1,12 @@
 #!/bin/bash
 
 host="localhost"
-port="3002"
+
+if [[ -z "$1" ]]; then
+    port="3002"
+else
+    port=$1
+fi
 
 echo "Waiting for the wordpress ..."
 

@@ -4,16 +4,6 @@ services:
   wordpress:
     container_name: "wordpress"
     image: wordpress:latest
-    volumes:
-      - ./wordpress:/var/www/html
-      - ./theme/:/var/www/html/wp-content/themes/sobol
-    ports:
-      - 3002:80
-    environment:
-      WORDPRESS_DB_PASSWORD: password
-      WORDPRESS_DB_HOST: mysql
-      WORDPRESS_DB_USER: admin
-      WORDPRESS_DB_NAME: underscored
     links:
       - mysql
     depends_on:
@@ -23,22 +13,11 @@ services:
   mysql:
     container_name: "mysql"
     image: mariadb:latest
-    volumes:
-      - ./data/:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: underscored
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: password
     restart: unless-stopped
 
   phpmyadmin:
     container_name: "phpmyadmin"
     image: phpmyadmin/phpmyadmin
-    environment:
-      MYSQL_ROOT_PASSWORD: Password
-    ports:
-      - 3001:80
     links:
       - mysql:db
     depends_on:
