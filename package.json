@@ -15,7 +15,7 @@
     "docker-prune": "docker container prune -f && docker image prune -f && docker volume prune -f",
     "docker-restart": "yarpm run docker-down && yarpm run docker-up",
     "docker-up": "docker-compose -f docker-compose.yml -f config/docker-compose.dev.yml up -d",
-    "docker-up-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d",
+    "docker-up-prod": "docker-compose -f docker-compose.yml -f config/docker-compose.prod.yml up -d",
     "format": "prettier-package-json --write && eslint --fix *.js ./src/ && stylelint --fix ./src/",
     "lint": "eslint *.js ./src/ && stylelint ./src/",
     "serve": "yarpm run docker-up && yarpm run wait && cross-env NODE_ENV=development webpack-dev-server -p --progress --mode development --config webpack.config.js",
